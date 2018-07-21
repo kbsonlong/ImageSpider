@@ -15,9 +15,9 @@ SPIDER_MODULES = ['ImageSpider.spiders']
 NEWSPIDER_MODULE = 'ImageSpider.spiders'
 
 
-LOG_FILE = 'imagespider.log'
-LOG_LEVEL = 'INFO'
-LOG_ENCODING = 'utf-8'
+# LOG_FILE = 'imagespider.log'
+# LOG_LEVEL = 'INFO'
+# LOG_ENCODING = 'utf-8'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'ImageSpider (+http://www.yourdomain.com)'
@@ -75,7 +75,7 @@ SPIDER_MIDDLEWARES = {
 ITEM_PIPELINES = {
    # 'ImageSpider.pipelines.ImagespiderPipeline': 300,
    # 'ImageSpider.pipelines.XwnspiderPipeline': 300,
-   'ImageSpider.pipelines.TencentPipeline': 300,
+   # 'ImageSpider.pipelines.TencentPipeline': 300,
    #  'ImageSpider.Imagepipelines.DuplicatesPipeline': 100,
     'ImageSpider.Imagepipelines.MyImagesPipeline': 301,
 }
@@ -110,3 +110,4 @@ IMAGES_EXPIRES = 90                                     # 过期天数
 
 RETRY_ENABLED = False                                    #禁止重试
 DOWNLOAD_TIMEOUT = 15                                    #下载超时时间
+# JOBDIR = 'job_process/001'

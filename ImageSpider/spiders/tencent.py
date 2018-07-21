@@ -2,7 +2,7 @@
 import scrapy
 
 from scrapy.linkextractors import LinkExtractor
-from scrapy.spider import CrawlSpider,Rule
+from scrapy.spiders import CrawlSpider,Rule
 from ImageSpider.items import TencentItem
 
 
