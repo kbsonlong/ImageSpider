@@ -8,7 +8,7 @@
 import scrapy
 
 
-class ImagespiderItem(scrapy.Item):
+class DuplicatesItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     url = scrapy.Field()
@@ -20,9 +20,24 @@ class ImagespiderItem(scrapy.Item):
         return insert_sql, params
 
 
-class DoubanImgsItem(scrapy.Item):
+class ZflImgsItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     image_urls = scrapy.Field()
     images = scrapy.Field()
     image_paths = scrapy.Field()
+
+class TencentItem(scrapy.Item):
+    # 职位
+    name = scrapy.Field()
+    # 详情链接
+    positionlink = scrapy.Field()
+    #职位类别
+    positiontype = scrapy.Field()
+    # 人数
+    peoplenum = scrapy.Field()
+    # 工作地点
+    worklocation = scrapy.Field()
+    # 发布时间
+    publish = scrapy.Field()
+

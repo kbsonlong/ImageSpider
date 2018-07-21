@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from ImageSpider.items import ImagespiderItem
+from ImageSpider.items import DuplicatesItem
 
 class XwnSpider(scrapy.Spider):
     name = 'xwn'
@@ -8,7 +8,7 @@ class XwnSpider(scrapy.Spider):
     start_urls = ['https://www.along.party/?cat=2']
 
     def parse(self, response):
-        item = ImagespiderItem()
+        item = DuplicatesItem()
         pagelist = response.xpath('//article[@class="excerpt"]')
         for page in pagelist:
             item['url'] = page.xpath('./header/h2/a/@href').extract_first()
@@ -22,7 +22,7 @@ class XwnSpider(scrapy.Spider):
             print(response.url)
 
     def next_page(self,response):
-        item = ImagespiderItem()
+        item = DuplicatesItem()
         pagelist = response.xpath('//article[@class="excerpt"]')
         for page in pagelist:
             item['url'] = page.xpath('./header/h2/a/@href').extract_first()

@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 import scrapy
 #from urllib import request
-from ImageSpider.items import ImagespiderItem,DoubanImgsItem
+from ImageSpider.items import DuplicatesItem,ZflImgsItem
 
 
 class ZflSpider(scrapy.Spider):
     name = 'zfl'
     allowed_domains = ['92zfl.com','sozfl.com']
     start_urls = ['https://92zfl.com/luyilu/']
-    #start_urls = ['https://sozfl.com/serch.php?keyword=%BC%AB%C6%B7%B4%F3%D0%D8']
 
     def parse(self, response):
-        item = ImagespiderItem()
+        item = DuplicatesItem()
 
         ##获取到下一页地
         next_page_url = response.xpath('//li[@class="next-page"]/a/@href').extract_first()
@@ -29,6 +28,9 @@ class ZflSpider(scrapy.Spider):
         for page in pagelist:
             url = page.xpath('./@href').extract_first()
             title = page.xpath('./@title').extract_first()
+            item['url'] = url
+            item['title'] = title
+            yield item
             yield scrapy.Request(response.urljoin(url),callback=self.Second_pages)
 
     def Second_pages(self,response):
@@ -45,7 +47,7 @@ class ZflSpider(scrapy.Spider):
         for image in imageslist:
             list_imgs = image.select('./img/@src').extract()
             image_alt = image.select('./img/@alt').extract()
-            item = DoubanImgsItem()
+            item = ZflImgsItem()
             item['image_urls'] = list_imgs
             item['images'] = image_alt
             yield item

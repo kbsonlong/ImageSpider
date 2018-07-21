@@ -7,7 +7,22 @@ __email__ = 'kbsonlong@gmail.com'
 from scrapy.contrib.pipeline.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 from scrapy.http import Request
+import redis
+from ImageSpider.items import DuplicatesItem,ZflImgsItem
 
+
+Redis = redis.StrictRedis(host='www.along.party', port=6379, db=4)
+
+
+class DuplicatesPipeline(object):
+    """Item去重复"""
+    def process_item(self, item, spider):
+        if isinstance(item, DuplicatesItem):
+            if Redis.exists('url:%s:%s' % (item['url'],item['title'])):
+                raise DropItem("Duplicate item found: %s" % item['url'])
+            else:
+                Redis.set('url:%s:%s' % (item['url'],item['title']), 4)
+                return item
 
 ###使用ImagesPipeline下载图片
 class MyImagesPipeline(ImagesPipeline):
@@ -34,9 +49,11 @@ class MyImagesPipeline(ImagesPipeline):
         # down_file_name = u'full/{0}/{1}'.format(index, image_guid)
         return down_file_name
 
-    def item_completed(self, results, item, info):
+    def item_completed(self, results,item, info):
+
         image_paths = [x['path'] for ok, x in results if ok]
         if not image_paths:
             raise DropItem("Item contains no images")
         item['image_paths'] = image_paths
         return item
+
