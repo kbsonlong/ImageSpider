@@ -13,7 +13,11 @@ class TencentPipeline(object):
 
     def process_item(self, item, spider):
         text = json.dumps(dict(item), ensure_ascii=False) + ",\n"
-        self.filename.write(text.encode('utf-8'))
+        try:
+            self.filename.write(text.encode('utf-8'))
+        except:
+            self.filename.write(text)
+
         return item
 
     def close_spider(self, spider):
@@ -53,7 +57,7 @@ import pymysql
 from twisted.enterprise import adbapi
 
 class MysqlTwistedPipline(object):
-    def __init__(self, ):
+    def __init__(self):
         dbparms = dict(
             host='www.along.party',
             db='demo',
@@ -87,3 +91,4 @@ class MysqlTwistedPipline(object):
     def handle_error(self, failure, item, spider):
         #处理异步插入的异常
         print (failure)
+

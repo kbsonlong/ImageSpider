@@ -81,3 +81,12 @@ class ArticleRule(Base):
             enable=0
         )
     """
+
+
+class Proxy_pool(Base):
+    #"代理池"
+    __tablename__ = "proxy_pool"
+    ip = Column(String(100))
+    port = Column(Integer(20))
+    speed = Column(FLOAT())
+    proxy_type = Column(String(20))
