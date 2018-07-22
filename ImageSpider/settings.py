@@ -75,9 +75,9 @@ SPIDER_MIDDLEWARES = {
 ITEM_PIPELINES = {
    # 'ImageSpider.pipelines.ImagespiderPipeline': 300,
    # 'ImageSpider.pipelines.XwnspiderPipeline': 300,
-   # 'ImageSpider.pipelines.TencentPipeline': 300,
+   'ImageSpider.pipelines.TencentPipeline': 300,
    #  'ImageSpider.Imagepipelines.DuplicatesPipeline': 100,
-    'ImageSpider.Imagepipelines.MyImagesPipeline': 301,
+   #  'ImageSpider.Imagepipelines.MyImagesPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -110,4 +110,20 @@ IMAGES_EXPIRES = 90                                     # 过期天数
 
 RETRY_ENABLED = False                                    #禁止重试
 DOWNLOAD_TIMEOUT = 15                                    #下载超时时间
-# JOBDIR = 'job_process/001'
+
+
+# windows pip install mysqlclient
+# linux pip install MySQL-python
+DATABASE = {'drivername': 'mysql+pymysql',
+            'host': 'www.along.party',
+            'port': 8080,
+            'username': 'root',
+            'password': 'kbsonlong',
+            'database': 'spider_tools',
+            'query': {'charset': 'utf8'}
+            }
+REDIS_CONFIG = {'host':'www.along.party',
+                'password':'*******',
+                'port':9090,
+                'db':3
+                }

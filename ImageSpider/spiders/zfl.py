@@ -7,8 +7,8 @@ from ImageSpider.items import DuplicatesItem,ZflImgsItem
 class ZflSpider(scrapy.Spider):
     name = 'zfl'
     allowed_domains = ['92zfl.com','sozfl.com']
-    # start_urls = ['https://92zfl.com/luyilu/']
-    start_urls = ['https://sozfl.com/serch.php?keyword=%CB%BD%C8%CB%CD%E6%CE%EF&page=1']
+    start_urls = ['https://92zfl.com/luyilu/']
+    # start_urls = ['https://sozfl.com/serch.php?keyword=%CB%BD%C8%CB%CD%E6%CE%EF&page=1']
 
     def parse(self, response):
         item = DuplicatesItem()
