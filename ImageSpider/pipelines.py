@@ -13,7 +13,7 @@ class TencentPipeline(object):
 
     def process_item(self, item, spider):
         text = json.dumps(dict(item), ensure_ascii=False) + ",\n"
-        self.filename.write(text)
+        self.filename.write(text.encode('utf-8'))
         return item
 
     def close_spider(self, spider):
