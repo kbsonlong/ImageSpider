@@ -90,3 +90,10 @@ class LagouJobItem(scrapy.Item):
     )
     crawl_time = scrapy.Field()
 
+class Article(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    body = scrapy.Field()
+    publish_time = scrapy.Field()
+    source_site = scrapy.Field()
+    author = scrapy.Field()

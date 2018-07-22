@@ -54,15 +54,15 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-SPIDER_MIDDLEWARES = {
-   'ImageSpider.RotateUserAgentMiddleware.RotateUserAgentMiddleware': 543,
-}
+# SPIDER_MIDDLEWARES = {
+#    'ImageSpider.CustomDownloaderMiddleware.RandomUserAgentMiddlware': 543,
+# }
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'ImageSpider.middlewares.ImagespiderDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'ImageSpider.CustomDownloaderMiddleware.RandomUserAgentMiddlware': 543,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -127,3 +127,5 @@ REDIS_CONFIG = {'host':'www.along.party',
                 'port':9090,
                 'db':3
                 }
+
+RANDOM_UA_TYPE = "random"
