@@ -97,3 +97,9 @@ class Article(scrapy.Item):
     publish_time = scrapy.Field()
     source_site = scrapy.Field()
     author = scrapy.Field()
+
+class Xici(scrapy.Item):
+    ip = scrapy.Field()
+    port = scrapy.Field()
+    proxy_type = scrapy.Field()
+    speed = scrapy.Field()

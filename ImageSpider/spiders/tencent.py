@@ -29,19 +29,6 @@ class TencentSpider(CrawlSpider):
 
         super(TencentSpider, self).__init__()
 
-    # allowed_domains = ['hr.tencent.com']
-    # start_urls = ['https://hr.tencent.com/position.php?&start=0#a']
-    # pagelink = LinkExtractor(allow=('start=\d+'))
-    # # print(pagelink)
-    #
-    # #可以写多个rule规则
-    # rules = [
-    #     # follow = True需要跟进的时候加上这句。
-    #     # 有callback的时候就有follow
-    #     # 只要符合匹配规则，在rule中都会发送请求，同是调用回调函数处理响应
-    #     # rule就是批量处理请求
-    #     Rule(pagelink,callback='parse_item',follow=True),
-    # ]
 
     # 使用CrawlSpider时，不能写parse方法，因为CrawlSpider源码中已经有了parse方法，会覆盖导致程序不能跑
     def parse_item(self, response):

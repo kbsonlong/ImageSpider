@@ -4,7 +4,7 @@ __author__ = 'kbson'
 __blog__ = 'https://www.along.party'
 __email__ = 'kbsonlong@gmail.com'
 
-from scrapy import log
+from scrapy.log import logger
 import random
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 class RotateUserAgentMiddleware(UserAgentMiddleware):
@@ -53,7 +53,7 @@ class RotateUserAgentMiddleware(UserAgentMiddleware):
             # 显示当前使用的useragent
             print("********Current UserAgent:%s************" % ua)
             # 记录
-            log.msg('Current UserAgent: ' + ua)
+            logger.msg('Current UserAgent: ' + ua)
             request.headers.setdefault('User-Agent', ua)
 
 

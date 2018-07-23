@@ -13,7 +13,7 @@ import datetime
 
 from sqlalchemy.engine.url import URL
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime
+from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime,Float
 from sqlalchemy.dialects.mysql import LONGTEXT
 from .settings import DATABASE
 
@@ -83,10 +83,17 @@ class ArticleRule(Base):
     """
 
 
-class Proxy_pool(Base):
+class Proxy_pool():
     #"代理池"
-    __tablename__ = "proxy_pool"
+    __tablename__ = "proxypools"
+
+    id = Column(Integer, primary_key=True)
     ip = Column(String(100))
-    port = Column(Integer(20))
-    speed = Column(FLOAT())
+    port = Column(Integer())
+    speed = Column(Float())
     proxy_type = Column(String(20))
+
+    def __init__( self, **items ):
+        for key in items:
+            if hasattr(self, key):
+                setattr(self, key, items[key])

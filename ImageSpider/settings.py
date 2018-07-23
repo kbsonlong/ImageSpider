@@ -75,7 +75,8 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
    # 'ImageSpider.pipelines.ImagespiderPipeline': 300,
    # 'ImageSpider.pipelines.XwnspiderPipeline': 300,
-   'ImageSpider.pipelines.TencentPipeline': 300,
+   # 'ImageSpider.pipelines.TencentPipeline': 300,
+   'ImageSpider.pipelines.XiciPipline': 300,
    #  'ImageSpider.Imagepipelines.DuplicatesPipeline': 100,
    #  'ImageSpider.Imagepipelines.MyImagesPipeline': 301,
 }
